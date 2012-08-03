@@ -1,0 +1,2 @@
+" comma, not backslash, is the leader
+let mapleader = ","

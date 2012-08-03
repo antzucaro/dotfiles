@@ -1,0 +1,4 @@
+cp .vimrc.before ~
+cp .vimrc.after ~
+cp .gvimrc.after ~
+cp terminator/config ~/.config/terminator/
