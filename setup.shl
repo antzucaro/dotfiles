@@ -1,4 +1,11 @@
+-- VIM and GVIM
 cp .vimrc.before ~
 cp .vimrc.after ~
 cp .gvimrc.after ~
+
+-- Terminal emulator
 cp terminator/config ~/.config/terminator/
+
+-- AwesomeWM
+cp theme.lua ~/.config/awesome/
+cp rc.lua ~/.config/awesome/
