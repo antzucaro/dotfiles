@@ -82,7 +82,7 @@ myawesomemenu = {
 }
 
 photomenu = {
-   { "darktable", "darktable" },
+   { "RawTherapee", "rawtherapee" },
    { "digikam", "digikam" },
    { "gimp", "gimp" },
    { "hugin", "hugin" }
@@ -239,12 +239,11 @@ globalkeys = awful.util.table.join(
     -- custom launchers use control + alt
     awful.key({ "Mod1", "Control"         }, "c", function () awful.util.spawn("chromium") end),
     awful.key({ "Mod1", "Control"         }, "d", function () awful.util.spawn("digikam") end),
-    awful.key({ "Mod1", "Control"         }, "e", function () awful.util.spawn("easytag") end),
     awful.key({ "Mod1", "Control"         }, "f", function () awful.util.spawn("thunar") end),
     awful.key({ "Mod1", "Control"         }, "h", function () awful.util.spawn("hugin") end),
     awful.key({ "Mod1", "Control"         }, "k", function () awful.util.spawn("keepassx") end),
-    awful.key({ "Mod1", "Control"         }, "m", function () awful.util.spawn(terminal .. " -e cmus") end),
-    awful.key({ "Mod1", "Control"         }, "p", function () awful.util.spawn("darktable") end),
+    awful.key({ "Mod1", "Control"         }, "m", function () awful.util.spawn(terminal .. " -e ncmpc") end),
+    awful.key({ "Mod1", "Control"         }, "p", function () awful.util.spawn("rawtherapee") end),
     awful.key({ "Mod1", "Control"         }, "n", function () awful.util.spawn(terminal .. " -e 'ncmpc --host lee'") end),
     awful.key({ "Mod1", "Control"         }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ "Mod1", "Control"         }, "v", function () awful.util.spawn("gvim") end),
