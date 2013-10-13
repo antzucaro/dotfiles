@@ -249,6 +249,10 @@ globalkeys = awful.util.table.join(
     awful.key({ "Mod1", "Control"         }, "v", function () awful.util.spawn("gvim") end),
     awful.key({ "Mod1", "Control"         }, "w", function () awful.util.spawn("firefox") end),
 
+    -- mouse sensitivity control
+    awful.key({ "Mod1", "Control"         }, "Prior", function () awful.util.spawn("sudo lomoco --no-sms -m") end),
+    awful.key({ "Mod1", "Control"         }, "Next", function () awful.util.spawn("sudo lomoco --no-sms -8") end),
+
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
