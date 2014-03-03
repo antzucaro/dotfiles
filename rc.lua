@@ -82,7 +82,7 @@ myawesomemenu = {
 }
 
 photomenu = {
-   { "RawTherapee", "rawtherapee" },
+   { "darktable", "darktable" },
    { "digikam", "digikam" },
    { "gimp", "gimp" },
    { "hugin", "hugin" }
@@ -238,12 +238,11 @@ globalkeys = awful.util.table.join(
 
     -- custom launchers use control + alt
     awful.key({ "Mod1", "Control"         }, "c", function () awful.util.spawn("chromium") end),
-    awful.key({ "Mod1", "Control"         }, "d", function () awful.util.spawn("digikam") end),
+    awful.key({ "Mod1", "Control"         }, "d", function () awful.util.spawn("darktable") end),
     awful.key({ "Mod1", "Control"         }, "f", function () awful.util.spawn("thunar") end),
     awful.key({ "Mod1", "Control"         }, "h", function () awful.util.spawn("hugin") end),
     awful.key({ "Mod1", "Control"         }, "k", function () awful.util.spawn("keepassx") end),
     awful.key({ "Mod1", "Control"         }, "m", function () awful.util.spawn(terminal .. " -e ncmpc") end),
-    awful.key({ "Mod1", "Control"         }, "p", function () awful.util.spawn("rawtherapee") end),
     awful.key({ "Mod1", "Control"         }, "n", function () awful.util.spawn(terminal .. " -e 'ncmpc --host lee'") end),
     awful.key({ "Mod1", "Control"         }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ "Mod1", "Control"         }, "v", function () awful.util.spawn("gvim") end),
@@ -260,8 +259,15 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+
+    -- Iterate through layouts
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+
+    -- Set layout directly
+    awful.key({ modkey,           }, "f",     function () awful.layout.set(awful.layout.suit.floating) end),
+    awful.key({ modkey,           }, "m",     function () awful.layout.set(awful.layout.suit.max) end),
+    awful.key({ modkey,           }, "t",     function () awful.layout.set(awful.layout.suit.tile) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -278,7 +284,7 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey,           }, "F11",    function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ "Mod1",           }, "F4",     function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
