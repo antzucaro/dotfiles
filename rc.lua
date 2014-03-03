@@ -255,6 +255,10 @@ globalkeys = awful.util.table.join(
     awful.key({                           }, "XF86AudioRaiseVolume", function () awful.util.spawn("pulse_volume.shl increase") end),
     awful.key({                           }, "XF86AudioMute", function () awful.util.spawn("pulse_volume.shl mute") end),
     awful.key({                           }, "XF86Eject", function () awful.util.spawn("eject /dev/sr0") end),
+    --
+    -- mouse sensitivity control
+    awful.key({ "Mod1", "Control"         }, "Prior", function () awful.util.spawn("sudo lomoco --no-sms -m") end),
+    awful.key({ "Mod1", "Control"         }, "Next", function () awful.util.spawn("sudo lomoco --no-sms -8") end),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
