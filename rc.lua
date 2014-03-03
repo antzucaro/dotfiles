@@ -197,10 +197,12 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    -- Tag movement
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
+    -- Focus movement
     awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx( 1)
@@ -248,10 +250,16 @@ globalkeys = awful.util.table.join(
     awful.key({ "Mod1", "Control"         }, "v", function () awful.util.spawn("gvim") end),
     awful.key({ "Mod1", "Control"         }, "w", function () awful.util.spawn("firefox") end),
 
+    -- Media keys
+    awful.key({                           }, "XF86AudioLowerVolume", function () awful.util.spawn("pulse_volume.shl decrease") end),
+    awful.key({                           }, "XF86AudioRaiseVolume", function () awful.util.spawn("pulse_volume.shl increase") end),
+    awful.key({                           }, "XF86AudioMute", function () awful.util.spawn("pulse_volume.shl mute") end),
+    awful.key({                           }, "XF86Eject", function () awful.util.spawn("eject /dev/sr0") end),
+
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ "Mod1", "Control" }, "Delete", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
