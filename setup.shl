@@ -12,3 +12,7 @@ cp rc.lua ~/.config/awesome/
 
 # Bitstream Vera fonts - can't live without them!
 cp fonts/* ~/.fonts/
+
+# PulseAudio volume script
+mkdir ~/bin
+cp pulse_volume.shl ~/bin/
