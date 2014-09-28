@@ -16,3 +16,6 @@ cp fonts/* ~/.fonts/
 # PulseAudio volume script
 mkdir ~/bin
 cp pulse_volume.shl ~/bin/
+
+# i3
+cp i3.config ~/.i3/config
