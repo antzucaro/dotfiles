@@ -58,7 +58,7 @@ layouts =
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    -- awful.layout.suit.max.fullscreen,
+    awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.magnifier
 }
 -- }}}
@@ -82,7 +82,7 @@ myawesomemenu = {
 }
 
 photomenu = {
-   { "darktable", "darktable" },
+   { "RawTherapee", "rawtherapee" },
    { "digikam", "digikam" },
    { "gimp", "gimp" },
    { "hugin", "hugin" }
@@ -197,12 +197,10 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    -- Tag movement
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-    -- Focus movement
     awful.key({ modkey,           }, "k",
         function ()
             awful.client.focus.byidx( 1)
@@ -239,23 +237,26 @@ globalkeys = awful.util.table.join(
     awful.key({ "Mod1",                   }, "F3", function () awful.util.spawn("dmenu") end),
 
     -- custom launchers use control + alt
-    awful.key({ "Mod1", "Control"         }, "c", function () awful.util.spawn("chromium") end),
+    awful.key({ "Mod1", "Control"         }, "c", function () awful.util.spawn("chromium-browser") end),
     awful.key({ "Mod1", "Control"         }, "d", function () awful.util.spawn("darktable") end),
     awful.key({ "Mod1", "Control"         }, "f", function () awful.util.spawn("thunar") end),
     awful.key({ "Mod1", "Control"         }, "h", function () awful.util.spawn("hugin") end),
-    awful.key({ "Mod1", "Control"         }, "k", function () awful.util.spawn("keepassx") end),
+    awful.key({ "Mod1", "Control"         }, "k", function () awful.util.spawn("keepass2") end),
     awful.key({ "Mod1", "Control"         }, "m", function () awful.util.spawn(terminal .. " -e ncmpc") end),
     awful.key({ "Mod1", "Control"         }, "n", function () awful.util.spawn(terminal .. " -e 'ncmpc --host lee'") end),
     awful.key({ "Mod1", "Control"         }, "t", function () awful.util.spawn(terminal) end),
     awful.key({ "Mod1", "Control"         }, "v", function () awful.util.spawn("gvim") end),
     awful.key({ "Mod1", "Control"         }, "w", function () awful.util.spawn("firefox") end),
 
-    -- Media keys
-    awful.key({                           }, "XF86AudioLowerVolume", function () awful.util.spawn("pulse_volume.shl decrease") end),
-    awful.key({                           }, "XF86AudioRaiseVolume", function () awful.util.spawn("pulse_volume.shl increase") end),
-    awful.key({                           }, "XF86AudioMute", function () awful.util.spawn("pulse_volume.shl mute") end),
-    awful.key({                           }, "XF86Eject", function () awful.util.spawn("eject /dev/sr0") end),
-    --
+    -- audio control
+    awful.key({}, "XF86AudioPlay",        function () awful.util.spawn("mpc play") end),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -D pulse sset Master 1%-") end),
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -D pulse sset Master 1%+") end),
+    awful.key({}, "XF86AudioMute",        function () awful.util.spawn("amixer -D pulse sset Master toggle") end),
+    awful.key({}, "Pause",                function () awful.util.spawn("mpc pause") end),
+    awful.key({}, "XF86AudioNext",        function () awful.util.spawn("mpc next") end),
+    awful.key({}, "XF86AudioPrev",        function () awful.util.spawn("mpc prev") end),
+
     -- mouse sensitivity control
     awful.key({ "Mod1", "Control"         }, "Prior", function () awful.util.spawn("sudo lomoco --no-sms -m") end),
     awful.key({ "Mod1", "Control"         }, "Next", function () awful.util.spawn("sudo lomoco --no-sms -8") end),
@@ -263,7 +264,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ "Mod1", "Control" }, "Delete", awesome.quit),
+    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -271,15 +272,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-
-    -- Iterate through layouts
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
-
-    -- Set layout directly
-    awful.key({ modkey,           }, "f",     function () awful.layout.set(awful.layout.suit.floating) end),
-    awful.key({ modkey,           }, "m",     function () awful.layout.set(awful.layout.suit.max) end),
-    awful.key({ modkey,           }, "t",     function () awful.layout.set(awful.layout.suit.tile) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
@@ -296,7 +290,7 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "F11",    function (c) c.fullscreen = not c.fullscreen  end),
+    awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ "Mod1",           }, "F4",     function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
