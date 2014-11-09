@@ -1,7 +1,6 @@
 # VIM and GVIM
-cp .vimrc.before ~
-cp .vimrc.local ~
-cp .gvimrc.local ~
+cp .vimrc ~
+cp .gvimrc ~
 
 # Terminal emulator
 cp terminator/config ~/.config/terminator/
