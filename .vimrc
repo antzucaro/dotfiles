@@ -27,6 +27,7 @@ Plugin 'kien/ctrlp.vim'
 
 " Git support
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
 " Suggestions
 Plugin 'https://github.com/shougo/neocomplcache'
@@ -36,10 +37,22 @@ Plugin 'godlygeek/tabular'
 
 " Tagbar
 Plugin 'majutsushi/tagbar'
-nmap <leader>t :TagbarOpen<CR>
+nmap <leader>t :TagbarToggle<CR><c-l>
 
 " Golang
 Plugin 'fatih/vim-go'
+
+" Python
+Plugin 'python-mode/python-mode'
+" Uncomment if you have performance problems
+let g:pymode_rope = 1
+let g:pymode_breakpoint = 0
+let g:pymode_options_max_line_length = 100
+
+Plugin 'alfredodeza/coveragepy.vim'
+
+" Buffer navigation
+Plugin 'jeetsukumaran/vim-buffergator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,16 +102,21 @@ set autoindent
 " Turn off folding by default
 set nofoldenable
 
-" Maximum width of documents (one less than a normal
-" 80-line terminal.
-set textwidth=79
+" Maximum width of documents 
+set textwidth=99
+
+" Draw a line at the text width boundary
+set colorcolumn=-1
+
+" Don't wrap lines
+set nowrap
 
 " Format options:
 " c => auto wraps comments
 " q => formats comments with "gq"
 " r => automatically insert current comment leader after inserts
 " t => auto wraps text using textwidth
-set formatoptions=c,q,r,t
+set formatoptions=c,q,r
 
 " Show line and column number
 set ruler
@@ -109,12 +127,21 @@ set mouse=a
 " Fast terminals
 set ttyfast
 
+" Do not bring up the preview window with autocomplete
+set completeopt-=preview
+
 " Navigate wrapped lines easier
 nnoremap j gj
 nnoremap k gk
 
+" Navigate windows easier
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " Clear highlights
-nnoremap <leader><Space> :noh<CR>
+nnoremap <leader><Space> :noh<CR>:pc<CR>
 
 " Backup directories
 set backupdir=~/.vim/tmp,.
