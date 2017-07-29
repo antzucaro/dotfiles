@@ -2,6 +2,9 @@
 cp .vimrc ~
 cp .gvimrc ~
 
+mkdir -p ~/.vim/colors
+cp Tomorrow-Night-Eighties.vim ~/.vim/colors/
+
 # Terminal emulator
 cp terminator/config ~/.config/terminator/
 
