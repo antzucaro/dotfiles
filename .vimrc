@@ -54,6 +54,9 @@ Plugin 'alfredodeza/coveragepy.vim'
 " Buffer navigation
 Plugin 'jeetsukumaran/vim-buffergator'
 
+" Rust
+Plugin 'rust-lang/rust.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,3 +156,4 @@ colorscheme Tomorrow-Night-Eighties
 filetype plugin indent on
 syntax on
 syntax enable
+
