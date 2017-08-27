@@ -13,4 +13,8 @@ cp rc.lua ~/.config/awesome/
 cp fonts/* ~/.fonts/
 
 # i3
+mkdir ~/.i3
 cp i3.config ~/.i3/config
+
+mkdir -p ~/.config/i3status
+cp i3status.config ~/.config/i3status
