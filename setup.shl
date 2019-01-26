@@ -6,7 +6,8 @@ mkdir -p ~/.vim/colors
 cp Tomorrow-Night-Eighties.vim ~/.vim/colors/
 
 # AwesomeWM
-cp theme.lua ~/.config/awesome/
+mkdir -p ~/.config/awesome/
+cp freedesktop/ lain/ themes/ ~/.config/awesome/
 cp rc.lua ~/.config/awesome/
 
 # Bitstream Vera fonts - can't live without them!
