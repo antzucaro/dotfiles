@@ -54,6 +54,7 @@ theme.play                                      = theme.icon_dir .. "/play.png"
 theme.clock                                     = theme.icon_dir .. "/clock.png"
 theme.calendar                                  = theme.icon_dir .. "/cal.png"
 theme.cpu                                       = theme.icon_dir .. "/cpu.png"
+theme.temp                                      = theme.icon_dir .. "/temp.png"
 theme.net_up                                    = theme.icon_dir .. "/net_up.png"
 theme.net_down                                  = theme.icon_dir .. "/net_down.png"
 theme.layout_tile                               = theme.icon_dir .. "/tile.png"
@@ -205,7 +206,15 @@ theme.weather = lain.widget.weather({
     city_id = 4787534, -- Sterling, VA
     notification_preset = { font = "Monospace 9", position = "bottom_right" },
     units = "imperial",
+    settings = function()
+        units = math.floor(weather_now["main"]["temp"])
+        widget:set_markup(space3 .. markup.font(theme.font, " " .. units .. "°F")
+                          .. markup.font("Roboto 5", " "))
+    end,
 })
+local weather_icon = wibox.widget.imagebox(theme.temp)
+local weatherbg = wibox.container.background(theme.weather.widget, theme.bg_focus, gears.shape.rectangle)
+local weatherwidget = wibox.container.margin(weatherbg, 0, 0, 5, 5)
 
 -- Launcher
 local mylauncher = awful.widget.button({ image = theme.awesome_icon_launcher })
@@ -289,6 +298,9 @@ function theme.at_screen_connect(s)
             bottom_bar,
             cpu_icon,
             cpuwidget,
+            bottom_bar,
+            weather_icon,
+            weatherwidget,
             bottom_bar,
             calendar_icon,
             calendarwidget,
