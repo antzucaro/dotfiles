@@ -103,7 +103,7 @@ set nofoldenable
 " set textwidth=99
 
 " Draw a line at the text width boundary
-set colorcolumn=-1
+set colorcolumn=100
 
 " Don't wrap lines
 set nowrap
