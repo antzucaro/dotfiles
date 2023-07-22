@@ -10,8 +10,9 @@ mkdir -p ~/.config/awesome/
 cp freedesktop/ lain/ themes/ ~/.config/awesome/
 cp rc.lua ~/.config/awesome/
 
-# Bitstream Vera fonts - can't live without them!
+# Bitstream Vera and Iosevka Antibody fonts - can't live without them!
 cp fonts/* ~/.fonts/
+fc-cache -f
 
 # i3
 mkdir ~/.i3
