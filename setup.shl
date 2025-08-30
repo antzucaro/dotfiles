@@ -21,3 +21,6 @@ cp i3.config ~/.i3/config
 
 mkdir -p ~/.config/i3status
 cp i3status.config ~/.config/i3status
+
+# Starship (shell prompt formatting)
+cp starship.toml ~/.config/
