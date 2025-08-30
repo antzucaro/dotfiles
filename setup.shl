@@ -1,3 +1,6 @@
+# ZSH
+cp .zshrc ~
+
 # VIM, Neovim and GVIM
 cp .vimrc ~
 cp .gvimrc ~
