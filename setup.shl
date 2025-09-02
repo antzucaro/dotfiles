@@ -9,6 +9,9 @@ cp -r nvim ~/.config/
 mkdir -p ~/.vim/colors
 cp Tomorrow-Night-Eighties.vim ~/.vim/colors/
 
+# tmux
+cp .tmux.conf ~/
+
 # AwesomeWM
 mkdir -p ~/.config/awesome/
 cp freedesktop/ lain/ themes/ ~/.config/awesome/
